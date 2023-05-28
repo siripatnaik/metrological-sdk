@@ -130,4 +130,19 @@ export default {
       }
     })
   },
+ lock(context){
+    return new Promise((resolve, reject) => {
+      try {
+        context = contextCheck(context)
+        if (context) {
+          unlocked = false
+          resolve(!!!unlocked)
+        } else {
+          reject('Incorrect Context provided')
+        }
+      } catch (e) {
+        reject(e)
+      }
+    })
+  },
 }
